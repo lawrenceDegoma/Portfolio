@@ -50,15 +50,27 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(30px);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .glass-strong {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
 }
 
 .text-gradient {
@@ -79,3 +91,13 @@ body {
 ::-webkit-scrollbar-track { background: #0c0c0c; }
 ::-webkit-scrollbar-thumb { background: rgba(234, 88, 12, 0.45); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(234, 88, 12, 0.75); }
+
+/* Disable heavy animations on mobile */
+@media (max-width: 768px) {
+  .animate-float {
+    animation: none;
+  }
+  .animate-pulse-glow {
+    animation: none;
+  }
+}

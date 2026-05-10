@@ -26,8 +26,8 @@ const PROJECTS: Project[] = [
     emoji: "🦈",
     tagline: "Crowdsourced campus parking for CSULB commuters",
     description:
-      "SharkPark solves the daily nightmare of finding parking at CSULB. Commuters anonymously ping the app as they enter or exit lots, building a live occupancy picture for everyone. Features include real-time lot availability, hourly and weekly forecasts, smart lot recommendations, event-aware alerts, and a live shuttle tracker — all with privacy by default.",
-    tech: ["React Native", "Node.js", "Firebase", "Maps API", "Tailwind"],
+      "SharkPark is a real-time parking availability system for CSULB — a campus with 28 lots and a daily commuter parking nightmare. Every user's phone becomes an anonymous sensor: when it enters or exits a lot's geofence, the backend aggregates those events into a live occupancy estimate. No personal location data stored, ever. Features include live lot occupancy, short and long-term forecasts, smart recommendations, event-aware alerts, and a live shuttle tracker.",
+    tech: ["React Native", "TypeScript", "NestJS", "PostgreSQL", "Prisma", "Azure AD SSO", "Fly.io", "Turborepo", "Cloudflare R2"],
     gradient: "from-blue-700 via-cyan-600 to-teal-500",
     accent: "cyan",
     featured: true,
@@ -64,19 +64,6 @@ const PROJECTS: Project[] = [
     preview: "https://lawandpour-khaki.vercel.app/",
   },
   {
-    title: "HTML/CSS Parser",
-    emoji: "🧠",
-    tagline: "Custom browser engine built from scratch",
-    description:
-      "Built a working HTML/CSS renderer using SFML — parsing markup into a DOM tree and styling rules into a cascade map, then rendering it all visually. This project gave me a deep understanding of how browsers actually work under the hood.",
-    tech: ["C++", "SFML", "Parsing", "Data Structures"],
-    gradient: "from-slate-700 via-zinc-600 to-stone-500",
-    accent: "zinc",
-    featured: false,
-    category: "Systems",
-    github: "https://github.com/lawrenceDegoma/HTML_Parser",
-  },
-  {
     title: "RateMyProf for GCC",
     emoji: "⭐",
     tagline: "RateMyProfessors ratings injected into GCC's course catalog",
@@ -103,6 +90,19 @@ const PROJECTS: Project[] = [
     category: "Web",
     link: "https://lawrencedegoma.github.io/sea-Round2-Project/",
     preview: "https://lawrencedegoma.github.io/sea-Round2-Project/",
+  },
+  {
+    title: "HTML/CSS Parser",
+    emoji: "🧠",
+    tagline: "Custom browser engine built from scratch",
+    description:
+      "Built a working HTML/CSS renderer using SFML — parsing markup into a DOM tree and styling rules into a cascade map, then rendering it all visually. This project gave me a deep understanding of how browsers actually work under the hood.",
+    tech: ["C++", "SFML", "Parsing", "Data Structures"],
+    gradient: "from-slate-700 via-zinc-600 to-stone-500",
+    accent: "zinc",
+    featured: false,
+    category: "Systems",
+    github: "https://github.com/lawrenceDegoma/HTML_Parser",
   },
 ];
 
