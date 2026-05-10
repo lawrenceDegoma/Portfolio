@@ -256,7 +256,7 @@ export default function Hero() {
 								{/* Image */}
 								<div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-orange-500/40">
 									<Image
-										src="/profile.JPG"
+										src="/profile.webp"
 										alt="Lawrence Degoma"
 										fill
 										className="object-cover object-top"
