@@ -54,7 +54,7 @@ export default function About() {
               More Than Just <span className="text-gradient">Code</span>
             </h2>
             <p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
-              I&apos;m Lawrence — a software engineer who believes the best engineers are students of life first.
+              I&apos;m Lawrence — a software engineer who believes the best engineers are those who are curious first.
               My curiosity doesn&apos;t stop at the terminal.
             </p>
           </div>
