@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const LINKS = [
 	{
@@ -47,34 +48,27 @@ export default function Contact() {
 			</div>
 
 			<div className="max-w-4xl mx-auto relative z-10">
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={inView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.7 }}
-					className="text-center mb-16"
-				>
-					<p
+				<BlurFade delay={0} inView className="text-center mb-16">
+				<p
 						className="text-orange-500 text-sm tracking-widest uppercase mb-4"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
-						// let's connect
+						// let&apos;s connect
 					</p>
 					<h2 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-						Let's Build
+						Let&apos;s Build
 						<br />
 						<span className="text-gradient">Something Great</span>
 					</h2>
 					<p className="text-xl text-white/50 max-w-xl mx-auto leading-relaxed">
-						Whether you're looking to hire, collaborate, or just want to talk
+						Whether you&apos;re looking to hire, collaborate, or just want to talk
 						about sharks — my inbox is always open.
 					</p>
-				</motion.div>
+				</BlurFade>
 
 				{/* Big CTA */}
-				<motion.div
-					initial={{ opacity: 0, scale: 0.95 }}
-					animate={inView ? { opacity: 1, scale: 1 } : {}}
-					transition={{ duration: 0.6, delay: 0.2 }}
+				<BlurFade delay={0.15} inView>
+				<div
 					className="glass rounded-xl p-10 mb-8 text-center relative overflow-hidden"
 				>
 					<div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5" />
@@ -101,19 +95,17 @@ export default function Contact() {
 							Say Hello
 						</a>
 					</div>
-				</motion.div>
+				</div>
+				</BlurFade>
 
 				{/* Social links */}
 				<div className="grid sm:grid-cols-3 gap-4 mb-16">
 					{LINKS.map((link, i) => (
-						<motion.a
-							key={i}
+						<BlurFade key={i} delay={0.25 + i * 0.1} inView>
+						<a
 							href={link.href}
 							target="_blank"
 							rel="noopener noreferrer"
-							initial={{ opacity: 0, y: 20 }}
-							animate={inView ? { opacity: 1, y: 0 } : {}}
-							transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
 							className={`glass rounded-lg p-6 flex items-center gap-4 border border-white/5 ${link.color} hover:scale-[1.02] transition-all duration-300 group`}
 						>
 							<div
@@ -129,23 +121,19 @@ export default function Contact() {
 									{link.sublabel}
 								</div>
 							</div>
-						</motion.a>
+						</a>
+						</BlurFade>
 					))}
 				</div>
 
 				{/* Footer */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={inView ? { opacity: 1 } : {}}
-					transition={{ delay: 0.6 }}
-					className="text-center"
-				>
+				<BlurFade delay={0.5} inView className="text-center">
 					<div className="w-20 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-6" />
 					<p
 						className="text-white/20 text-sm"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
-						Designed & Built by{" "}
+						Designed &amp; Built by{" "}
 						<span className="text-orange-500/60">Lawrence Degoma</span> — 2025
 					</p>
 					<p
@@ -154,7 +142,7 @@ export default function Contact() {
 					>
 						Built with Next.js, Tailwind CSS, Framer Motion
 					</p>
-				</motion.div>
+				</BlurFade>
 			</div>
 		</section>
 	);

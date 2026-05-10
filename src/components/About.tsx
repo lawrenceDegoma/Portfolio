@@ -2,7 +2,9 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Code2, Dumbbell, Music2, Gamepad2, Waves, Camera, Cpu, Globe } from "lucide-react";
+import { Code2, Dumbbell, Music2, TreePine, Waves, Camera, Cpu, Globe } from "lucide-react";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
 const SKILLS = [
 	{ category: "Languages", items: ["Python", "Swift", "C++", "JavaScript", "TypeScript", "C"] },
@@ -12,22 +14,20 @@ const SKILLS = [
 ];
 
 const HOBBIES = [
-	{ icon: <Dumbbell size={22} />, label: "Weightlifting", color: "from-orange-500 to-red-600", desc: "Daily grind at the gym — discipline on the floor, discipline at the keyboard." },
-	{ icon: <Music2 size={22} />, label: "Music", color: "from-amber-500 to-orange-600", desc: "DJ on the side. I curate playlists and mixes for every mood and energy." },
-	{ icon: <Gamepad2 size={22} />, label: "Gaming", color: "from-stone-500 to-zinc-600", desc: "Strategy and FPS — gaming sharpened my problem-solving instincts early on." },
-	{ icon: <Waves size={22} />, label: "Beach Life", color: "from-teal-500 to-cyan-600", desc: "Grew up near the coast. The ocean keeps me grounded and inspired." },
+	{ icon: <Dumbbell size={22} />, label: "Weightlifting", color: "from-orange-500 to-red-600", desc: "Training is non-negotiable. The gym teaches consistency and showing up even when you don't feel like it trains discipline. Habits that carry straight into engineering." },
+	{ icon: <Music2 size={22} />, label: "Music", color: "from-amber-500 to-orange-600", desc: "~40k Spotify minutes a year and counting. Music is always on, it's how I focus, decompress, and move through the day." },
+	{ icon: <TreePine size={22} />, label: "Hiking", color: "from-green-600 to-emerald-700", desc: "Nothing resets the mind like being out on a trail. I love exploring nature — the further from the city, the better." },
+	{ icon: <Waves size={22} />, label: "Ocean & Marine Life", color: "from-teal-500 to-cyan-600", desc: "Fascinated by the ocean and the life in it. Marine ecosystems are endlessly complex and stunning." },
 	{ icon: <Camera size={22} />, label: "Photography", color: "from-yellow-500 to-amber-600", desc: "I have an eye for framing — a skill that bleeds into my UI design thinking." },
 	{ icon: <Globe size={22} />, label: "Travel", color: "from-slate-500 to-gray-600", desc: "New places mean new perspectives. Exposure fuels creativity." },
 ];
 
 const STATS = [
-	{ value: "4+", label: "Projects Shipped" },
-	{ value: "3+", label: "Years Coding" },
-	{ value: "CSULB", label: "CS Degree" },
-	{ value: "∞", label: "Ideas Brewing" },
-];
-
-const fadeUp = {
+  { value: 4, suffix: "+", label: "Projects Shipped" },
+  { value: 3, suffix: "+", label: "Years Coding" },
+  { value: null, display: "CSULB", label: "CS Degree" },
+  { value: null, display: "∞", label: "Ideas Brewing" },
+];const fadeUp = {
 	hidden: { opacity: 0, y: 40 },
 	visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
@@ -46,37 +46,35 @@ export default function About() {
 
 			<div className="max-w-6xl mx-auto relative z-10">
 
-				{/* Section header */}
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={inView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.6 }}
-					className="text-center mb-20"
-				>
-					<p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>// who i am</p>
-					<h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-						More Than Just <span className="text-gradient">Code</span>
-					</h2>
-					<p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
-						I'm Lawrence — a software engineer who believes the best engineers are students of life first.
-						My curiosity doesn't stop at the terminal.
-					</p>
-				</motion.div>
+        {/* Section header */}
+        <BlurFade delay={0} inView>
+          <div className="text-center mb-20">
+            <p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>// who i am</p>
+            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              More Than Just <span className="text-gradient">Code</span>
+            </h2>
+            <p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+              I&apos;m Lawrence — a software engineer who believes the best engineers are students of life first.
+              My curiosity doesn&apos;t stop at the terminal.
+            </p>
+          </div>
+        </BlurFade>
 
-				{/* Stats row */}
+			{/* Stats row */}
 				<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
 					{STATS.map((stat, i) => (
-						<motion.div
-							key={i}
-							custom={i}
-							variants={fadeUp}
-							initial="hidden"
-							animate={inView ? "visible" : "hidden"}
-							className="glass rounded-lg p-6 text-center group hover:border-orange-500/30 transition-all duration-300"
-						>
-							<div className="text-4xl font-bold text-gradient mb-2">{stat.value}</div>
-							<div className="text-white/50 text-sm font-medium">{stat.label}</div>
-						</motion.div>
+						<BlurFade key={i} delay={0.1 + i * 0.1} inView>
+							<div className="glass rounded-lg p-6 text-center group hover:border-orange-500/30 transition-all duration-300">
+								<div className="text-4xl font-bold text-gradient mb-2">
+									{stat.value !== null && stat.value !== undefined ? (
+										<><NumberTicker value={stat.value} />{stat.suffix}</>
+									) : (
+										stat.display
+									)}
+								</div>
+								<div className="text-white/50 text-sm font-medium">{stat.label}</div>
+							</div>
+						</BlurFade>
 					))}
 				</div>
 

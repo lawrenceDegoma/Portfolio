@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Github, Eye, X } from "lucide-react";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 interface Project {
   title: string;
@@ -23,15 +24,15 @@ const PROJECTS: Project[] = [
   {
     title: "SharkPark",
     emoji: "🦈",
-    tagline: "Shark conservation meets social tech",
+    tagline: "Crowdsourced campus parking for CSULB commuters",
     description:
-      "SharkPark is a full-stack conservation application that allows users to track, log, and share shark sightings in real time. Built to raise awareness about endangered shark species, it combines geolocation, community reporting, and educational content into one intuitive platform.",
-    tech: ["React", "Node.js", "Firebase", "Maps API", "Tailwind"],
+      "SharkPark solves the daily nightmare of finding parking at CSULB. Commuters anonymously ping the app as they enter or exit lots, building a live occupancy picture for everyone. Features include real-time lot availability, hourly and weekly forecasts, smart lot recommendations, event-aware alerts, and a live shuttle tracker — all with privacy by default.",
+    tech: ["React Native", "Node.js", "Firebase", "Maps API", "Tailwind"],
     gradient: "from-blue-700 via-cyan-600 to-teal-500",
     accent: "cyan",
     featured: true,
-    category: "Full-Stack App",
-    link: "https://github.com/lawrenceDegoma",
+    category: "Mobile App",
+    link: "https://sharkpark.app",
     github: "https://github.com/lawrenceDegoma",
   },
   {
@@ -58,9 +59,9 @@ const PROJECTS: Project[] = [
     accent: "rose",
     featured: false,
     category: "Real-Time App",
-    link: "https://biggiesbar.vercel.app/",
+    link: "https://lawandpour-khaki.vercel.app/",
     github: "https://github.com/lawrenceDegoma",
-    preview: "https://biggiesbar.vercel.app/",
+    preview: "https://lawandpour-khaki.vercel.app/",
   },
   {
     title: "HTML/CSS Parser",
@@ -76,16 +77,18 @@ const PROJECTS: Project[] = [
     github: "https://github.com/lawrenceDegoma/HTML_Parser",
   },
   {
-    title: "AI Voice Assistant",
-    emoji: "🤖",
-    tagline: "Speech-to-response with custom voices",
+    title: "RateMyProf for GCC",
+    emoji: "⭐",
+    tagline: "RateMyProfessors ratings injected into GCC's course catalog",
     description:
-      "A Python-powered voice assistant using Google Cloud STT, OpenAI GPT, and a Voice AI layer for custom voice synthesis. Built for unique character-driven interactions — you choose the persona, it responds in character.",
-    tech: ["Python", "Google Cloud", "OpenAI", "Voice AI"],
+      "A published Chrome extension that injects RateMyProfessors ratings and reviews directly into Glendale Community College's class search page — no tab switching needed. Color-coded rating badges appear next to every professor's name on page load, with hover cards showing quality score, difficulty, 'would retake' %, and recent reviews. Built with a MV3 service worker querying the RMP GraphQL API, a MutationObserver to handle PeopleSoft's dynamic AJAX loading, and in-memory caching to keep things fast.",
+    tech: ["JavaScript", "Chrome Extensions", "GraphQL", "MutationObserver", "CSS"],
     gradient: "from-emerald-700 via-teal-600 to-cyan-500",
     accent: "teal",
     featured: false,
-    category: "AI / ML",
+    category: "Browser Extension",
+    github: "https://github.com/lawrenceDegoma/GCC_RatemyProf_Extension",
+    link: "https://chromewebstore.google.com/detail/ratemyprof-for-gcc/ppnijakoikpoepilpldnbfgdjemhlnca",
   },
   {
     title: "Cafédex",
@@ -122,32 +125,24 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>// what i've built</p>
+        <BlurFade delay={0} inView className="text-center mb-20">
+          <p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>// what i&apos;ve built</p>
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-xl text-white/50 max-w-2xl mx-auto">
             Real problems, real solutions. Each project taught me something new about engineering, design, and humans.
           </p>
-        </motion.div>
+        </BlurFade>
 
         {/* Featured projects (large) */}
         <div className="grid lg:grid-cols-2 gap-6 mb-6">
           {PROJECTS.filter((p) => p.featured).map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              onClick={() => setSelected(project)}
-              className="group relative glass rounded-xl overflow-hidden cursor-pointer hover:scale-[1.01] transition-all duration-500"
-            >
+            <BlurFade key={project.title} delay={0.1 + i * 0.15} inView>
+              <div
+                onClick={() => setSelected(project)}
+                className="group relative glass rounded-xl overflow-hidden cursor-pointer hover:scale-[1.01] transition-all duration-500"
+              >
               {/* Gradient header */}
               <div className={`h-44 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20" />
@@ -205,21 +200,19 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+              </div>
+            </BlurFade>
           ))}
         </div>
 
         {/* Other projects (smaller grid) */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {PROJECTS.filter((p) => !p.featured).map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              onClick={() => setSelected(project)}
-              className="group glass rounded-lg p-6 cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:border-orange-500/30"
-            >
+            <BlurFade key={project.title} delay={0.2 + i * 0.1} inView>
+              <div
+                onClick={() => setSelected(project)}
+                className="group glass rounded-lg p-6 cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:border-orange-500/30"
+              >
               <div className="text-4xl mb-4">{project.emoji}</div>
               <div className="text-xs text-white/30 uppercase tracking-widest mb-2" style={{ fontFamily: "var(--font-space-mono)" }}>{project.category}</div>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">
@@ -233,7 +226,8 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+              </div>
+            </BlurFade>
           ))}
         </div>
       </div>

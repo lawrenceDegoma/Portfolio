@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Github, Linkedin, Mail, ChevronDown, FileText } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";import { Github, Linkedin, Mail, ChevronDown, FileText } from "lucide-react";
 import Image from "next/image";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const ROLES = [
 	"Software Engineer",
@@ -130,106 +130,92 @@ export default function Hero() {
 					<div className="flex flex-col lg:flex-row items-center gap-16">
 						{/* Left: Text */}
 						<div className="flex-1 text-center lg:text-left">
-							<motion.div
-								initial={{ opacity: 0, y: 30 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: 0.1 }}
-								className="inline-flex items-center gap-2 px-4 py-2 glass rounded-md text-sm text-orange-300 mb-8"
-							>
-								<span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-								Available for opportunities
-							</motion.div>
-
-							<motion.h1
-								initial={{ opacity: 0, y: 40 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.7, delay: 0.2 }}
-								className="text-6xl lg:text-8xl font-bold tracking-tight leading-none mb-4"
-							>
-								<span className="block text-white/90">Lawrence</span>
-								<span className="block text-gradient">Degoma</span>
-							</motion.h1>
-
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: 0.4 }}
-								className="text-2xl lg:text-3xl text-white/60 mb-8 h-10 flex items-center justify-center lg:justify-start gap-1"
-							>
-								<span style={{ fontFamily: "var(--font-space-mono)" }}>
-									{displayed}
-								</span>
-								<span className="w-0.5 h-7 bg-orange-400 animate-pulse ml-0.5" />
-							</motion.div>
-
-							<motion.p
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: 0.5 }}
-								className="text-lg text-white/50 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0"
-							>
-								I build things that sit at the intersection of creativity and
-								engineering — from innovative parking apps to hand-tracking HUDs.
-								Always chasing the next idea.
-							</motion.p>
-
-							<motion.div
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: 0.6 }}
-								className="flex flex-wrap gap-4 justify-center lg:justify-start"
-							>
-								<a
-									href="#projects"
-									className="group px-8 py-4 rounded-md font-semibold text-white relative overflow-hidden transition-all duration-300"
-									style={{
-										background: "linear-gradient(135deg, #ea580c, #f97316)",
-									}}
-								>
-									<span className="relative z-10">View My Work</span>
-									<div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-								</a>
-
-								<a
-									href="/LawrenceDegomaResume.pdf"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="group px-8 py-4 rounded-md font-semibold text-white/80 hover:text-white glass border border-white/10 hover:border-orange-500/50 flex items-center gap-2 transition-all duration-300 hover:scale-105"
-								>
-									<FileText size={18} />
-									Resume
-								</a>
-
-								<div className="flex gap-3">
-									{[
-										{
-											href: "https://github.com/lawrenceDegoma",
-											icon: <Github size={20} />,
-											color: "hover:border-orange-500",
-										},
-										{
-											href: "https://www.linkedin.com/in/lawrencedegoma",
-											icon: <Linkedin size={20} />,
-											color: "hover:border-orange-400",
-										},
-										{
-											href: "mailto:lawrencedegoma02@gmail.com",
-											icon: <Mail size={20} />,
-											color: "hover:border-amber-500",
-										},
-									].map((link, i) => (
-										<a
-											key={i}
-											href={link.href}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={`p-4 glass rounded-md text-white/60 hover:text-white border border-white/10 ${link.color} transition-all duration-300 hover:scale-110`}
-										>
-											{link.icon}
-										</a>
-									))}
+							<BlurFade delay={0.1}>
+								<div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-md text-sm text-orange-300 mb-8">
+									<span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+									Available for opportunities
 								</div>
-							</motion.div>
+							</BlurFade>
+
+							<BlurFade delay={0.2}>
+								<h1 className="text-6xl lg:text-8xl font-bold tracking-tight leading-none mb-4">
+									<span className="block text-white/90">Lawrence</span>
+									<span className="block text-gradient">Degoma</span>
+								</h1>
+							</BlurFade>
+
+							<BlurFade delay={0.35}>
+								<div className="text-2xl lg:text-3xl text-white/60 mb-8 h-10 flex items-center justify-center lg:justify-start gap-1">
+									<span style={{ fontFamily: "var(--font-space-mono)" }}>
+										{displayed}
+									</span>
+									<span className="w-0.5 h-7 bg-orange-400 animate-pulse ml-0.5" />
+								</div>
+							</BlurFade>
+
+							<BlurFade delay={0.45}>
+								<p className="text-lg text-white/50 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
+									I build things that sit at the intersection of creativity and
+									engineering — from innovative parking apps to hand-tracking HUDs.
+									Always chasing the next idea.
+								</p>
+							</BlurFade>
+
+							<BlurFade delay={0.55}>
+								<div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+									<a
+										href="#projects"
+										className="group px-8 py-4 rounded-md font-semibold text-white relative overflow-hidden transition-all duration-300 hover:scale-105"
+										style={{
+											background: "linear-gradient(135deg, #ea580c, #f97316)",
+										}}
+									>
+										<span className="relative z-10">View My Work</span>
+										{/* shimmer sweep */}
+										<span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+									</a>
+
+									<a
+										href="/LawrenceDegomaResume.pdf"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="group px-8 py-4 rounded-md font-semibold text-white/80 hover:text-white glass border border-white/10 hover:border-orange-500/50 flex items-center gap-2 transition-all duration-300 hover:scale-105"
+									>
+										<FileText size={18} />
+										Resume
+									</a>
+
+									<div className="flex gap-3">
+										{[
+											{
+												href: "https://github.com/lawrenceDegoma",
+												icon: <Github size={20} />,
+												color: "hover:border-orange-500",
+											},
+											{
+												href: "https://www.linkedin.com/in/lawrencedegoma",
+												icon: <Linkedin size={20} />,
+												color: "hover:border-orange-400",
+											},
+											{
+												href: "mailto:lawrencedegoma02@gmail.com",
+												icon: <Mail size={20} />,
+												color: "hover:border-amber-500",
+											},
+										].map((link, i) => (
+											<a
+												key={i}
+												href={link.href}
+												target="_blank"
+												rel="noopener noreferrer"
+												className={`p-4 glass rounded-md text-white/60 hover:text-white border border-white/10 ${link.color} transition-all duration-300 hover:scale-110`}
+											>
+												{link.icon}
+											</a>
+										))}
+									</div>
+								</div>
+							</BlurFade>
 						</div>
 
 						{/* Right: Profile photo with rings */}
@@ -289,7 +275,7 @@ export default function Hero() {
 									}}
 									className="absolute -bottom-4 -right-4 glass-strong rounded-md px-4 py-2 text-sm font-semibold text-white border border-white/10"
 								>
-									🦈 SharkPark Creator
+									🦈 SharkPark Founder
 								</motion.div>
 
 								<motion.div
