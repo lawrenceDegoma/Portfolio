@@ -259,6 +259,7 @@ export default function Hero() {
 										src="/profile.webp"
 										alt="Lawrence Degoma"
 										fill
+										sizes="(max-width: 1024px) 288px, 320px"
 										className="object-cover object-top"
 										priority
 									/>
