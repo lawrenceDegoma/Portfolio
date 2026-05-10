@@ -1,21 +1,17 @@
-import AboutMe from '../components/AboutMe';
-import Projects from '../components/Projects';
-import { ChevronDown } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import ProjectsNew from '../components/ProjectsNew';
+import Contact from '../components/Contact';
 
 export default function Home() {
   return (
-    <main>
-      <AboutMe />
-
-      <div className="flex justify-center mt-10">
-        <a href="#projects" className="mt-10 animate-bounce text-3xl cursor-pointer">
-          <ChevronDown size={36} />
-        </a>
-      </div>
-
-      <section id="projects" className="mt-32 w-full">
-        <Projects />
-      </section>
+    <main className="relative">
+      <Navbar />
+      <Hero />
+      <About />
+      <ProjectsNew />
+      <Contact />
     </main>
   );
 }
