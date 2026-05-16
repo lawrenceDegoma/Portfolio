@@ -96,8 +96,8 @@ export default function About() {
 						<div className="space-y-5 text-white/60 leading-relaxed text-[15px]">
 							<p>
 								I'm a Computer Science student at <span className="text-orange-300 font-semibold">Cal State Long Beach</span> with a deep passion for
-								building tools that feel like magic. Whether it's a shark-tracking conservation app,
-								a gesture-controlled HUD, or a real-time bartender ordering system — I build for impact.
+								building tools that feel like magic. Whether it's a crowdsourced parking app that turns every student's phone into an anonymous sensor,
+								a gesture-controlled computer vision HUD, or a real-time bartender ordering system — I build for impact.
 							</p>
 							<p>
 								I gravitate toward projects that blend <span className="text-amber-300 font-semibold">creative problem-solving</span> with

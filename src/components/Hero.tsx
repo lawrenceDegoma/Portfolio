@@ -147,27 +147,29 @@ export default function Hero() {
 							</BlurFade>
 
 							<BlurFade delay={0.55}>
-								<div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-									<a
-										href="#projects"
-										className="group px-6 py-3 rounded-md font-semibold text-white relative overflow-hidden transition-all duration-300 hover:scale-105 text-sm lg:text-base"
-										style={{ background: "linear-gradient(135deg, #ea580c, #f97316)" }}
-									>
-										<span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-										View My Work
-									</a>
+								<div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
+									<div className="flex gap-3 justify-center lg:justify-start">
+										<a
+											href="#projects"
+											className="group px-5 py-2.5 rounded-md font-semibold text-white relative overflow-hidden transition-all duration-300 hover:scale-105 text-sm"
+											style={{ background: "linear-gradient(135deg, #ea580c, #f97316)" }}
+										>
+											<span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+											View My Work
+										</a>
 
-									<a
-										href="/LawrenceDegomaResume.pdf"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="group px-6 py-3 rounded-md font-semibold text-white/80 hover:text-white glass border border-white/10 hover:border-orange-500/50 flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm lg:text-base"
-									>
-										<FileText size={16} />
-										Resume
-									</a>
+										<a
+											href="/LawrenceDegomaResume.pdf"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="group px-5 py-2.5 rounded-md font-semibold text-white/80 hover:text-white glass border border-white/10 hover:border-orange-500/50 flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm"
+										>
+											<FileText size={15} />
+											Resume
+										</a>
+									</div>
 
-									<div className="flex gap-3">
+									<div className="flex gap-3 justify-center lg:justify-start">
 										{[
 											{ href: "https://github.com/lawrenceDegoma", icon: <Github size={18} /> },
 											{ href: "https://www.linkedin.com/in/lawrencedegoma", icon: <Linkedin size={18} /> },

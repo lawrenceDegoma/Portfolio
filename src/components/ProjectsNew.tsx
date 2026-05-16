@@ -4,10 +4,12 @@ import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Github, Eye, X } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
+import Image from "next/image";
 
 interface Project {
   title: string;
   emoji: string;
+  image?: string;
   tagline: string;
   description: string;
   tech: string[];
@@ -24,6 +26,7 @@ const PROJECTS: Project[] = [
   {
     title: "SharkPark",
     emoji: "🦈",
+    image: "/sharkparkv4.webp",
     tagline: "Crowdsourced campus parking for CSULB commuters",
     description:
       "SharkPark is a real-time parking availability system for CSULB — a campus with 28 lots and a daily commuter parking nightmare. Every user's phone becomes an anonymous sensor: when it enters or exits a lot's geofence, the backend aggregates those events into a live occupancy estimate. No personal location data stored, ever. Features include live lot occupancy, short and long-term forecasts, smart recommendations, event-aware alerts, and a live shuttle tracker.",
@@ -51,6 +54,7 @@ const PROJECTS: Project[] = [
   {
     title: "Bartender Ordering System",
     emoji: "🍹",
+    image: "/lawandpour.png",
     tagline: "Real-time drink ordering for 30+ guests",
     description:
       "Engineered a real-time web app to streamline party drink orders. Guests submit orders from their phones, which queue up live on an iPad interface for the bartender — eliminating chaos, cutting wait times, and genuinely making a party run smoother.",
@@ -66,6 +70,7 @@ const PROJECTS: Project[] = [
   {
     title: "RateMyProf for GCC",
     emoji: "⭐",
+    image: "/logo.png",
     tagline: "RateMyProfessors ratings injected into GCC's course catalog",
     description:
       "A published Chrome extension that injects RateMyProfessors ratings and reviews directly into Glendale Community College's class search page — no tab switching needed. Color-coded rating badges appear next to every professor's name on page load, with hover cards showing quality score, difficulty, 'would retake' %, and recent reviews. Built with a MV3 service worker querying the RMP GraphQL API, a MutationObserver to handle PeopleSoft's dynamic AJAX loading, and in-memory caching to keep things fast.",
@@ -146,7 +151,19 @@ export default function Projects() {
               {/* Gradient header */}
               <div className={`h-44 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute bottom-4 left-6 text-6xl">{project.emoji}</div>
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className={project.image.includes("logo") || project.image.includes("icon") ? "object-contain p-6" : "object-cover object-top"}
+                    sizes="600px"
+                  />
+                ) : (
+                  <div className="absolute bottom-4 left-6 w-14 h-14 rounded-md bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center text-white/60 text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "var(--font-space-mono)" }}>
+                    {project.category.slice(0, 3)}
+                  </div>
+                )}
                 <div className="absolute top-4 right-4">
                   <span className="px-3 py-1 glass rounded-md text-xs text-white/80" style={{ fontFamily: "var(--font-space-mono)" }}>
                     {project.category}
@@ -213,7 +230,17 @@ export default function Projects() {
                 onClick={() => setSelected(project)}
                 className="group glass rounded-lg p-6 cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:border-orange-500/30"
               >
-              <div className="text-4xl mb-4">{project.emoji}</div>
+              <div className="mb-4">
+                {project.image ? (
+                  <div className="relative w-12 h-12 rounded-md overflow-hidden bg-white/5">
+                    <Image src={project.image} alt={project.title} fill className="object-contain p-1.5" sizes="48px" />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 rounded-md bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center text-orange-400 text-xs font-bold" style={{ fontFamily: "var(--font-space-mono)" }}>
+                    {project.category.slice(0, 3).toUpperCase()}
+                  </div>
+                )}
+              </div>
               <div className="text-xs text-white/30 uppercase tracking-widest mb-2" style={{ fontFamily: "var(--font-space-mono)" }}>{project.category}</div>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">
                 {project.title}
@@ -249,9 +276,17 @@ export default function Projects() {
             className="relative max-w-2xl w-full glass-strong rounded-xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className={`h-48 bg-gradient-to-br ${selected.gradient} relative`}>
+            <div className={`h-48 bg-gradient-to-br ${selected.gradient} relative overflow-hidden`}>
               <div className="absolute inset-0 bg-black/20" />
-              <div className="absolute bottom-4 left-8 text-7xl">{selected.emoji}</div>
+              {selected.image && (
+                <Image
+                  src={selected.image}
+                  alt={selected.title}
+                  fill
+                  className={selected.image.includes("logo") || selected.image.includes("icon") ? "object-contain p-10" : "object-cover object-top"}
+                  sizes="672px"
+                />
+              )}
               <button
                 onClick={() => setSelected(null)}
                 className="absolute top-4 right-4 p-2 glass rounded-md text-white/70 hover:text-white transition-colors"
