@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
   {
     title: "SharkPark",
     emoji: "🦈",
-    image: "/sharkparkv4.webp",
+    image: "/SharkParkV4.webp",
     tagline: "Crowdsourced campus parking for CSULB commuters",
     description:
       "SharkPark is a real-time parking availability system for CSULB — a campus with 28 lots and a daily commuter parking nightmare. Every user's phone becomes an anonymous sensor: when it enters or exits a lot's geofence, the backend aggregates those events into a live occupancy estimate. No personal location data stored, ever. Features include live lot occupancy, short and long-term forecasts, smart recommendations, event-aware alerts, and a live shuttle tracker.",
