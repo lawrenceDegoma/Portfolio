@@ -36,7 +36,6 @@ const PROJECTS: Project[] = [
     featured: true,
     category: "Mobile App",
     link: "https://sharkpark.app",
-    github: "https://github.com/lawrenceDegoma",
   },
   {
     title: "Hand Tracking HUD",
@@ -49,7 +48,7 @@ const PROJECTS: Project[] = [
     accent: "orange",
     featured: true,
     category: "Computer Vision",
-    github: "https://github.com/lawrenceDegoma",
+    github: "https://github.com/lawrenceDegoma/HandTrackerHUD",
   },
   {
     title: "Bartender Ordering System",
@@ -64,7 +63,6 @@ const PROJECTS: Project[] = [
     featured: false,
     category: "Real-Time App",
     link: "https://lawandpour-khaki.vercel.app/",
-    github: "https://github.com/lawrenceDegoma",
     preview: "https://lawandpour-khaki.vercel.app/",
   },
   {
