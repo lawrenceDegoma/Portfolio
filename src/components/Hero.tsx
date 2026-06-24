@@ -147,7 +147,7 @@ export default function Hero() {
 							</BlurFade>
 
 							<BlurFade delay={0.55}>
-								<div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
+								<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap justify-center lg:justify-start">
 									<div className="flex gap-3 justify-center lg:justify-start">
 										<a
 											href="#projects"
