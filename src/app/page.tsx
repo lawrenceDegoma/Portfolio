@@ -10,6 +10,9 @@ const About = dynamic(() => import("@/components/About"), {
 const Projects = dynamic(() => import("@/components/ProjectsNew"), {
 	loading: () => <div className="py-32" />,
 });
+const Life = dynamic(() => import("@/components/Life"), {
+	loading: () => <div className="py-32" />,
+});
 const Contact = dynamic(() => import("@/components/Contact"), {
 	loading: () => <div className="py-32" />,
 });
@@ -21,6 +24,7 @@ export default function Home() {
 			<Hero />
 			<About />
 			<Projects />
+			<Life />
 			<Contact />
 		</main>
 	);

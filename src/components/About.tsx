@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Code2, Dumbbell, Music2, TreePine, Waves, Camera, Cpu, Globe } from "lucide-react";
+import { Code2, Cpu } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { NumberTicker } from "@/components/ui/number-ticker";
 
@@ -11,15 +11,6 @@ const SKILLS = [
 	{ category: "Frameworks & Libraries", items: ["OpenCV", "MediaPipe", "React", "Node.js", "Tailwind", "Firebase"] },
 	{ category: "Operating Systems", items: ["MacOS", "Linux"] },
 	{ category: "Domains", items: ["Human-Machine Interfaces (HMI)", "Real-Time Interaction Systems", "Computer Vision", "Platform Engineering"] },
-];
-
-const HOBBIES = [
-	{ icon: <Dumbbell size={22} />, label: "Weightlifting", color: "from-orange-500 to-red-600", desc: "Training is non-negotiable. The gym teaches consistency and showing up even when you don't feel like it trains discipline. Habits that carry straight into engineering." },
-	{ icon: <Music2 size={22} />, label: "Music", color: "from-amber-500 to-orange-600", desc: "~40k Spotify minutes a year and counting. Music is always on, it's how I focus, decompress, and move through the day." },
-	{ icon: <TreePine size={22} />, label: "Hiking", color: "from-green-600 to-emerald-700", desc: "Nothing resets the mind like being out on a trail. I love exploring nature — the further from the city, the better." },
-	{ icon: <Waves size={22} />, label: "Ocean & Marine Life", color: "from-teal-500 to-cyan-600", desc: "Fascinated by the ocean and the life in it. Marine ecosystems are endlessly complex and stunning." },
-	{ icon: <Camera size={22} />, label: "Photography", color: "from-yellow-500 to-amber-600", desc: "I have an eye for framing — a skill that bleeds into my UI design thinking." },
-	{ icon: <Globe size={22} />, label: "Travel", color: "from-slate-500 to-gray-600", desc: "New places mean new perspectives. Exposure fuels creativity." },
 ];
 
 const STATS = [
@@ -147,35 +138,6 @@ export default function About() {
 					</motion.div>
 				</div>
 
-				{/* Hobbies */}
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					animate={inView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.7, delay: 0.4 }}
-				>
-					<div className="text-center mb-10">
-						<p className="text-white/30 text-xs tracking-widest uppercase mb-3" style={{ fontFamily: "var(--font-space-mono)" }}>// outside the terminal</p>
-						<h3 className="text-3xl font-bold text-white">Life Beyond the Screen</h3>
-					</div>
-					<div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-						{HOBBIES.map((hobby, i) => (
-							<motion.div
-								key={i}
-								custom={i}
-								variants={fadeUp}
-								initial="hidden"
-								animate={inView ? "visible" : "hidden"}
-								className="glass rounded-lg p-5 group hover:scale-[1.02] transition-all duration-300 cursor-default"
-							>
-								<div className={`inline-flex p-2.5 rounded-md bg-gradient-to-br ${hobby.color} mb-4 text-white shadow-lg`}>
-									{hobby.icon}
-								</div>
-								<h4 className="font-bold text-white mb-2">{hobby.label}</h4>
-								<p className="text-white/50 text-sm leading-relaxed">{hobby.desc}</p>
-							</motion.div>
-						))}
-					</div>
-				</motion.div>
 			</div>
 		</section>
 	);
