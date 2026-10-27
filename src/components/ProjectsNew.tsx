@@ -88,7 +88,7 @@ const PROJECTS: Project[] = [
     gradient: "from-amber-700 via-orange-600 to-red-500",
     accent: "amber",
     featured: false,
-    category: "Web",
+    category: "Systems",
     github: "https://github.com/lawrenceDegoma/MacMultipeer",
   },
   {
