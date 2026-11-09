@@ -184,7 +184,7 @@ export default function Hero() {
 
 							<BlurFade delay={0.45}>
 								<p className="text-base lg:text-lg text-white/60 max-w-xl leading-relaxed mb-8 mx-auto lg:mx-0">
-									I build real tools that solve real problems — from crowdsourced parking apps to computer vision HUDs. CS student at CSULB who ships things.
+									I&apos;m a CS student at CSULB who likes building things for the people around me: a parking app for my campus, an app for grinding LeetCode with friends, and a HUD I can control with my hands.
 								</p>
 							</BlurFade>
 
@@ -268,7 +268,7 @@ export default function Hero() {
 									className="absolute -top-4 -left-4 glass-strong rounded-md px-3 py-1.5 text-xs font-semibold text-white border border-white/10 md:animate-bob"
 									style={{ animationDelay: "-1.75s" }}
 								>
-									✋ Hand Tracking HUD
+									🌿 Building Branch
 								</div>
 							</div>
 						</motion.div>

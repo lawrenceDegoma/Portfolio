@@ -15,11 +15,6 @@ interface BlurFadeProps {
   blur?: string;
 }
 
-const BLUR_FADE_VARIANTS = {
-  hidden: { opacity: 0, y: 6, filter: "blur(6px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
-
 export function BlurFade({
   children,
   className,

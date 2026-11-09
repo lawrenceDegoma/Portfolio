@@ -40,13 +40,13 @@ export default function About() {
         {/* Section header */}
         <BlurFade delay={0} inView>
           <div className="text-center mb-20">
-            <p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>// who i am</p>
+            <p className="text-orange-500 text-sm tracking-widest uppercase mb-4" style={{ fontFamily: "var(--font-space-mono)" }}>{"// who i am"}</p>
             <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
               More Than Just <span className="text-gradient">Code</span>
             </h2>
             <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-              I&apos;m Lawrence — a software engineer who believes the best engineers are those who are curious first.
-              My curiosity doesn&apos;t stop at the terminal.
+              Hey, I&apos;m Lawrence. I get curious about a lot of things, and writing software is
+              usually how I end up exploring them.
             </p>
           </div>
         </BlurFade>
@@ -86,18 +86,20 @@ export default function About() {
 						</div>
 						<div className="space-y-5 text-white/60 leading-relaxed text-[15px]">
 							<p>
-								I'm a Computer Science student at <span className="text-orange-300 font-semibold">Cal State Long Beach</span> with a deep passion for
-								building tools that feel like magic. Whether it's a crowdsourced parking app that turns every student's phone into an anonymous sensor,
-								a gesture-controlled computer vision HUD, or a real-time bartender ordering system — I build for impact.
+								I study Computer Science at <span className="text-orange-300 font-semibold">Cal State Long Beach</span>. Most of my
+								projects start the same way: something small bugs me and I can&apos;t stop thinking about how to fix it.
+								Finding parking on campus was a daily headache, so my friends and I built SharkPark. Interview prep is easier to stick
+								with when you&apos;re not doing it alone, so I built Branch.
 							</p>
 							<p>
-								I gravitate toward projects that blend <span className="text-amber-300 font-semibold">creative problem-solving</span> with
-								strong engineering fundamentals. My work spans full-stack web development, computer vision,
-								CLI tools, and AI-powered applications.
+								I like the space where <span className="text-amber-300 font-semibold">design and engineering</span> meet:
+								working out how something should feel to use, then doing the work to make it hold up. So far that&apos;s
+								taken me through full-stack web apps, computer vision, a Raspberry Pi photobooth, and a couple of
+								Chrome extensions.
 							</p>
 							<p>
-								I'm hunting for a role where I can grow fast, work on things that matter, and ship
-								software that <span className="text-orange-300 font-semibold">actually changes something</span>.
+								Right now I&apos;m looking for a full-time engineering role, ideally on a team where I&apos;d learn
+								a lot from the people around me and work on <span className="text-orange-300 font-semibold">things people actually use</span>.
 							</p>
 						</div>
 					</motion.div>

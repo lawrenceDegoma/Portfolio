@@ -11,7 +11,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 100vw, 50vw",
 		image: "/gorgonio.webp",
 		icon: <TreePine size={16} />,
-		desc: "Nothing resets the mind like a trail. The further from the city, the better.",
+		desc: "A good trail fixes most bad days. The farther from the city, the better.",
 		span: "col-span-2 lg:col-span-2 lg:row-span-2",
 		position: "object-center",
 	},
@@ -20,7 +20,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 100vw, 50vw",
 		image: "/bg.webp",
 		icon: <Music2 size={16} />,
-		desc: "~40k Spotify minutes a year. Whether it's listening or playing, it's how I focus, decompress, and move through the day.",
+		desc: "Around 40k Spotify minutes a year, and I play too. There's music on for pretty much everything I do.",
 		span: "col-span-2 lg:col-span-2",
 		position: "object-center",
 	},
@@ -29,7 +29,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 50vw, 25vw",
 		image: "/squatrack.webp",
 		icon: <Dumbbell size={16} />,
-		desc: "Consistency, showing up when I don't feel like it.",
+		desc: "Mostly about showing up on the days I don't feel like it.",
 		span: "col-span-1",
 		position: "object-center",
 	},
@@ -38,7 +38,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 50vw, 25vw",
 		image: "/crab.webp",
 		icon: <Waves size={16} />,
-		desc: "Endlessly complex, endlessly stunning ecosystems.",
+		desc: "The ocean is full of strange, beautiful things, and I'll stare at any of them for way too long.",
 		span: "col-span-1",
 		position: "object-center",
 	},
@@ -47,7 +47,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 50vw, 50vw",
 		image: "/photography.webp",
 		icon: <Camera size={16} />,
-		desc: "An eye for framing that inspires my design.",
+		desc: "Learning to frame a shot changed how I think about layout and design.",
 		span: "col-span-1 lg:col-span-2",
 		position: "object-center",
 	},
@@ -56,7 +56,7 @@ const TILES = [
 		sizes: "(max-width: 1024px) 50vw, 50vw",
 		image: "/travel.webp",
 		icon: <Globe size={16} />,
-		desc: "New places, new perspectives. Exposure fuels creativity.",
+		desc: "New places shake up how I think. I usually come back with more ideas than photos.",
 		span: "col-span-1 lg:col-span-2",
 		position: "object-center",
 	},
@@ -71,13 +71,13 @@ export default function Life() {
 						className="text-orange-500 text-sm tracking-widest uppercase mb-4"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
-						// outside the terminal
+						{"// outside the terminal"}
 					</p>
 					<h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
 						Life Beyond the <span className="text-gradient">Screen</span>
 					</h2>
 					<p className="text-xl text-white/60 max-w-2xl mx-auto">
-						The things that keep me grounded, and make me a better engineer.
+						What I&apos;m up to when I&apos;m not at a keyboard.
 					</p>
 				</BlurFade>
 

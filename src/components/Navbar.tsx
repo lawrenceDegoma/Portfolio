@@ -14,12 +14,36 @@ const NAV_LINKS = [
 export default function Navbar() {
 	const [scrolled, setScrolled] = useState(false);
 	const [open, setOpen] = useState(false);
+	const [active, setActive] = useState<string | null>(null);
 
+	// Scroll state + scroll-spy. Sections are lazy-loaded, so look them up on
+	// every (rAF-throttled) scroll instead of observing them once at mount.
 	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 50);
-		onScroll();
+		let frame = 0;
+		const update = () => {
+			frame = 0;
+			setScrolled(window.scrollY > 50);
+			const line = window.innerHeight * 0.4;
+			let current: string | null = null;
+			for (const { href } of NAV_LINKS) {
+				const el = document.getElementById(href.slice(1));
+				if (el && el.getBoundingClientRect().top <= line) current = href;
+			}
+			const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+			if (atBottom) current = NAV_LINKS[NAV_LINKS.length - 1].href;
+			setActive(current);
+		};
+		const onScroll = () => {
+			if (!frame) frame = requestAnimationFrame(update);
+		};
+		update();
 		window.addEventListener("scroll", onScroll, { passive: true });
-		return () => window.removeEventListener("scroll", onScroll);
+		window.addEventListener("resize", onScroll);
+		return () => {
+			cancelAnimationFrame(frame);
+			window.removeEventListener("scroll", onScroll);
+			window.removeEventListener("resize", onScroll);
+		};
 	}, []);
 
 	// Close the mobile menu on Escape
@@ -52,22 +76,38 @@ export default function Navbar() {
 						className="text-white/55 text-xs ml-2"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
-						v2025
+						<span suppressHydrationWarning>v{new Date().getFullYear()}</span>
 					</span>
 				</a>
 
 				{/* Desktop nav */}
 				<div className="hidden md:flex items-center gap-8">
-					{NAV_LINKS.map((link) => (
-						<a
-							key={link.label}
-							href={link.href}
-							className="py-3 text-white/60 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
-						>
-							{link.label}
-							<span className="absolute bottom-2.5 left-0 w-0 h-px bg-orange-500 group-hover:w-full transition-all duration-300" />
-						</a>
-					))}
+					{NAV_LINKS.map((link) => {
+						const isActive = active === link.href;
+						return (
+							<a
+								key={link.label}
+								href={link.href}
+								aria-current={isActive ? "location" : undefined}
+								className={`py-3 text-sm font-medium transition-colors duration-200 relative group ${
+									isActive ? "text-white" : "text-white/60 hover:text-white"
+								}`}
+							>
+								{isActive && (
+									<motion.span
+										layoutId="nav-active"
+										aria-hidden
+										transition={{ type: "spring", stiffness: 420, damping: 36 }}
+										className="absolute -inset-x-3 inset-y-1.5 -z-10 rounded-md bg-white/[0.07] ring-1 ring-white/10"
+									/>
+								)}
+								{link.label}
+								{!isActive && (
+									<span aria-hidden className="absolute bottom-2.5 left-0 w-0 h-px bg-orange-500 group-hover:w-full transition-all duration-300" />
+								)}
+							</a>
+						);
+					})}
 					<a
 						href="mailto:lawrencedegoma02@gmail.com"
 						className="px-5 py-2.5 rounded-md font-semibold text-sm text-white glass border border-white/10 hover:border-orange-500/50 transition-all duration-300 hover:scale-105"
@@ -104,16 +144,26 @@ export default function Navbar() {
 						}}
 					>
 						<div className="px-6 py-4">
-							{NAV_LINKS.map((link) => (
-								<a
-									key={link.label}
-									href={link.href}
-									onClick={() => setOpen(false)}
-									className="block py-3 text-white/70 hover:text-white text-base font-medium transition-colors"
-								>
-									{link.label}
-								</a>
-							))}
+							{NAV_LINKS.map((link) => {
+								const isActive = active === link.href;
+								return (
+									<a
+										key={link.label}
+										href={link.href}
+										aria-current={isActive ? "location" : undefined}
+										onClick={() => setOpen(false)}
+										className={`relative block py-3 text-base font-medium transition-colors ${
+											isActive ? "text-white" : "text-white/70 hover:text-white"
+										}`}
+									>
+										<span
+											aria-hidden
+											className={`absolute -left-3 top-1/2 -translate-y-1/2 h-4 w-0.5 rounded-full transition-colors ${isActive ? "bg-orange-500" : "bg-transparent"}`}
+										/>
+										{link.label}
+									</a>
+								);
+							})}
 							<a
 								href="mailto:lawrencedegoma02@gmail.com"
 								onClick={() => setOpen(false)}

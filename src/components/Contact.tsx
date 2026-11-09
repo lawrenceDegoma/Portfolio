@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React from "react";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 
@@ -33,13 +32,9 @@ const LINKS = [
 ];
 
 export default function Contact() {
-	const ref = useRef(null);
-	const inView = useInView(ref, { once: true, margin: "-100px" });
-
 	return (
 		<section
 			id="contact"
-			ref={ref}
 			className="py-32 px-6 relative overflow-hidden"
 		>
 			{/* Background */}
@@ -53,7 +48,7 @@ export default function Contact() {
 						className="text-orange-500 text-sm tracking-widest uppercase mb-4"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
-						// let&apos;s connect
+						{"// let's connect"}
 					</p>
 					<h2 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
 						Let&apos;s Build
@@ -78,8 +73,8 @@ export default function Contact() {
 							Open to Opportunities
 						</h3>
 						<p className="text-white/60 mb-8 max-w-md mx-auto">
-							I'm actively looking for full-time software engineering roles where
-							I can contribute, learn, and build things I'm proud of.
+							I&apos;m looking for a full-time software engineering role. If your team is
+							building something interesting, I&apos;d love to hear about it.
 						</p>
 						<a
 							href="mailto:lawrencedegoma02@gmail.com"
@@ -133,7 +128,8 @@ export default function Contact() {
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
 						Designed &amp; Built by{" "}
-						<span className="text-orange-400">Lawrence Degoma</span> — 2025
+						<span className="text-orange-400">Lawrence Degoma</span> —{" "}
+						<span suppressHydrationWarning>{new Date().getFullYear()}</span>
 					</p>
 					<p
 						className="text-white/50 text-xs mt-2"
