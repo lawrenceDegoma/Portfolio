@@ -44,7 +44,7 @@ export default function About() {
             <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
               More Than Just <span className="text-gradient">Code</span>
             </h2>
-            <p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
               I&apos;m Lawrence — a software engineer who believes the best engineers are those who are curious first.
               My curiosity doesn&apos;t stop at the terminal.
             </p>
@@ -55,8 +55,8 @@ export default function About() {
 				<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
 					{STATS.map((stat, i) => (
 						<BlurFade key={i} delay={0.1 + i * 0.1} inView>
-							<div className="glass rounded-lg p-6 text-center group hover:border-orange-500/30 transition-all duration-300">
-								<div className="text-4xl font-bold text-gradient mb-2">
+							<div className="glass rounded-lg p-4 sm:p-6 text-center group hover:border-orange-500/30 transition-all duration-300">
+								<div className="text-3xl sm:text-4xl font-bold text-gradient mb-2">
 									{stat.value !== null && stat.value !== undefined ? (
 										<><NumberTicker value={stat.value} />{stat.suffix}</>
 									) : (
@@ -117,7 +117,7 @@ export default function About() {
 						<div className="space-y-6">
 							{SKILLS.map((group, i) => (
 								<div key={i}>
-									<p className="text-xs text-white/30 uppercase tracking-widest mb-3" style={{ fontFamily: "var(--font-space-mono)" }}>{group.category}</p>
+									<p className="text-xs text-white/55 uppercase tracking-widest mb-3" style={{ fontFamily: "var(--font-space-mono)" }}>{group.category}</p>
 									<div className="flex flex-wrap gap-2">
 										{group.items.map((item, j) => (
 											<motion.span

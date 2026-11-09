@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased bg-[#0c0c0c] text-white`}
       >

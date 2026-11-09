@@ -8,6 +8,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 const TILES = [
 	{
 		label: "Hiking",
+		sizes: "(max-width: 1024px) 100vw, 50vw",
 		image: "/gorgonio.webp",
 		icon: <TreePine size={16} />,
 		desc: "Nothing resets the mind like a trail. The further from the city, the better.",
@@ -16,6 +17,7 @@ const TILES = [
 	},
 	{
 		label: "Music",
+		sizes: "(max-width: 1024px) 100vw, 50vw",
 		image: "/bg.webp",
 		icon: <Music2 size={16} />,
 		desc: "~40k Spotify minutes a year. Whether it's listening or playing, it's how I focus, decompress, and move through the day.",
@@ -24,6 +26,7 @@ const TILES = [
 	},
 	{
 		label: "Weightlifting",
+		sizes: "(max-width: 1024px) 50vw, 25vw",
 		image: "/squatrack.webp",
 		icon: <Dumbbell size={16} />,
 		desc: "Consistency, showing up when I don't feel like it.",
@@ -32,6 +35,7 @@ const TILES = [
 	},
 	{
 		label: "Marine Life",
+		sizes: "(max-width: 1024px) 50vw, 25vw",
 		image: "/crab.webp",
 		icon: <Waves size={16} />,
 		desc: "Endlessly complex, endlessly stunning ecosystems.",
@@ -40,6 +44,7 @@ const TILES = [
 	},
 	{
 		label: "Photography",
+		sizes: "(max-width: 1024px) 50vw, 50vw",
 		image: "/photography.webp",
 		icon: <Camera size={16} />,
 		desc: "An eye for framing that inspires my design.",
@@ -48,6 +53,7 @@ const TILES = [
 	},
 	{
 		label: "Travel",
+		sizes: "(max-width: 1024px) 50vw, 50vw",
 		image: "/travel.webp",
 		icon: <Globe size={16} />,
 		desc: "New places, new perspectives. Exposure fuels creativity.",
@@ -70,7 +76,7 @@ export default function Life() {
 					<h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
 						Life Beyond the <span className="text-gradient">Screen</span>
 					</h2>
-					<p className="text-xl text-white/50 max-w-2xl mx-auto">
+					<p className="text-xl text-white/60 max-w-2xl mx-auto">
 						The things that keep me grounded, and make me a better engineer.
 					</p>
 				</BlurFade>
@@ -84,7 +90,7 @@ export default function Life() {
 									alt={tile.label}
 									fill
 									className={`object-cover ${tile.position} transition-transform duration-700 group-hover:scale-105`}
-									sizes="(max-width: 1024px) 50vw, 50vw"
+									sizes={tile.sizes}
 								/>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 								<div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
@@ -92,7 +98,7 @@ export default function Life() {
 										{tile.icon}
 										<h3 className="text-white font-bold text-base sm:text-lg">{tile.label}</h3>
 									</div>
-									<p className="text-white/60 text-xs sm:text-sm leading-snug lg:max-h-0 lg:opacity-0 lg:group-hover:max-h-24 lg:group-hover:opacity-100 transition-all duration-500 overflow-hidden line-clamp-2 lg:line-clamp-none">
+									<p className="text-white/75 text-xs sm:text-sm leading-snug line-clamp-2 lg:line-clamp-none overflow-hidden transition-all duration-500 lg:pointer-fine:max-h-0 lg:pointer-fine:opacity-0 lg:pointer-fine:group-hover:max-h-24 lg:pointer-fine:group-hover:opacity-100">
 										{tile.desc}
 									</p>
 								</div>

@@ -17,9 +17,18 @@ export default function Navbar() {
 
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 50);
-		window.addEventListener("scroll", onScroll);
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
+
+	// Close the mobile menu on Escape
+	useEffect(() => {
+		if (!open) return;
+		const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+		window.addEventListener("keydown", onKeyDown);
+		return () => window.removeEventListener("keydown", onKeyDown);
+	}, [open]);
 
 	return (
 		<motion.nav
@@ -34,12 +43,13 @@ export default function Navbar() {
 				{/* Logo */}
 				<a
 					href="#"
-					className="text-lg font-bold tracking-tight"
+					aria-label="Lawrence Degoma, back to top"
+					className="py-2 text-lg font-bold tracking-tight"
 					style={{ fontFamily: "var(--font-space-grotesk)" }}
 				>
 					<span className="text-gradient">LD</span>
 					<span
-						className="text-white/30 text-xs ml-2"
+						className="text-white/55 text-xs ml-2"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
 						v2025
@@ -52,10 +62,10 @@ export default function Navbar() {
 						<a
 							key={link.label}
 							href={link.href}
-							className="text-white/50 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+							className="py-3 text-white/60 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
 						>
 							{link.label}
-							<span className="absolute -bottom-0.5 left-0 w-0 h-px bg-orange-500 group-hover:w-full transition-all duration-300" />
+							<span className="absolute bottom-2.5 left-0 w-0 h-px bg-orange-500 group-hover:w-full transition-all duration-300" />
 						</a>
 					))}
 					<a
@@ -68,10 +78,14 @@ export default function Navbar() {
 
 				{/* Mobile toggle */}
 				<button
-					className="md:hidden p-2 text-white/60 hover:text-white transition-colors"
+					type="button"
+					aria-label={open ? "Close menu" : "Open menu"}
+					aria-expanded={open}
+					aria-controls="mobile-menu"
+					className="md:hidden -mr-2 p-3 text-white/70 hover:text-white transition-colors"
 					onClick={() => setOpen(!open)}
 				>
-					{open ? <X size={22} /> : <Menu size={22} />}
+					{open ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
 				</button>
 			</div>
 
@@ -82,26 +96,28 @@ export default function Navbar() {
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
+						id="mobile-menu"
 						className="md:hidden border-t border-white/5 overflow-hidden"
 						style={{
 							background: "rgba(12,12,12,0.97)",
 							backdropFilter: "blur(20px)",
 						}}
 					>
-						<div className="px-6 py-6 space-y-4">
+						<div className="px-6 py-4">
 							{NAV_LINKS.map((link) => (
 								<a
 									key={link.label}
 									href={link.href}
 									onClick={() => setOpen(false)}
-									className="block text-white/60 hover:text-white text-base font-medium transition-colors"
+									className="block py-3 text-white/70 hover:text-white text-base font-medium transition-colors"
 								>
 									{link.label}
 								</a>
 							))}
 							<a
 								href="mailto:lawrencedegoma02@gmail.com"
-								className="inline-flex px-5 py-2.5 rounded-md font-semibold text-sm text-white glass border border-white/10"
+								onClick={() => setOpen(false)}
+								className="mt-3 inline-flex px-5 py-3 rounded-md font-semibold text-sm text-white glass border border-white/10"
 							>
 								Hire Me
 							</a>

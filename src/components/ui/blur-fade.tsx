@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, Variant } from "framer-motion";
+import { motion, useInView, Variant, type UseInViewOptions } from "framer-motion";
 
 interface BlurFadeProps {
   children: React.ReactNode;
@@ -32,7 +32,10 @@ export function BlurFade({
   blur = "6px",
 }: BlurFadeProps) {
   const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true });
+  const inViewResult = useInView(ref, {
+    once: true,
+    margin: inViewMargin as UseInViewOptions["margin"],
+  });
   const isVisible = !inView || inViewResult;
 
   const resolvedVariants = variant ?? {
@@ -47,7 +50,7 @@ export function BlurFade({
       animate={isVisible ? "visible" : "hidden"}
       variants={resolvedVariants}
       transition={{ duration, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={className}
+      className={className ? `blur-fade ${className}` : "blur-fade"}
     >
       {children}
     </motion.div>

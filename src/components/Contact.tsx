@@ -60,7 +60,7 @@ export default function Contact() {
 						<br />
 						<span className="text-gradient">Something Great</span>
 					</h2>
-					<p className="text-xl text-white/50 max-w-xl mx-auto leading-relaxed">
+					<p className="text-xl text-white/60 max-w-xl mx-auto leading-relaxed">
 						Whether you&apos;re looking to hire, collaborate, or just want to talk
 						about sharks — my inbox is always open.
 					</p>
@@ -73,11 +73,11 @@ export default function Contact() {
 				>
 					<div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5" />
 					<div className="relative">
-						<div className="text-5xl mb-6">👋</div>
+						<div aria-hidden className="text-5xl mb-6">👋</div>
 						<h3 className="text-2xl font-bold text-white mb-4">
 							Open to Opportunities
 						</h3>
-						<p className="text-white/50 mb-8 max-w-md mx-auto">
+						<p className="text-white/60 mb-8 max-w-md mx-auto">
 							I'm actively looking for full-time software engineering roles where
 							I can contribute, learn, and build things I'm proud of.
 						</p>
@@ -99,13 +99,12 @@ export default function Contact() {
 				</BlurFade>
 
 				{/* Social links */}
-				<div className="grid sm:grid-cols-3 gap-4 mb-16">
+				<div className="grid md:grid-cols-3 gap-4 mb-16">
 					{LINKS.map((link, i) => (
 						<BlurFade key={i} delay={0.25 + i * 0.1} inView>
 						<a
 							href={link.href}
-							target="_blank"
-							rel="noopener noreferrer"
+							{...(!link.href.startsWith("mailto:") && { target: "_blank", rel: "noopener noreferrer" })}
 							className={`glass rounded-lg p-6 flex items-center gap-4 border border-white/5 ${link.color} hover:scale-[1.02] transition-all duration-300 group`}
 						>
 							<div
@@ -113,11 +112,11 @@ export default function Contact() {
 							>
 								{link.icon}
 							</div>
-							<div>
+							<div className="min-w-0">
 								<div className="font-bold text-white group-hover:text-orange-300 transition-colors">
 									{link.label}
 								</div>
-								<div className="text-white/40 text-xs mt-0.5 truncate">
+								<div className="text-white/55 text-xs mt-0.5 truncate" title={link.sublabel}>
 									{link.sublabel}
 								</div>
 							</div>
@@ -130,14 +129,14 @@ export default function Contact() {
 				<BlurFade delay={0.5} inView className="text-center">
 					<div className="w-20 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-6" />
 					<p
-						className="text-white/20 text-sm"
+						className="text-white/55 text-sm"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
 						Designed &amp; Built by{" "}
-						<span className="text-orange-500/60">Lawrence Degoma</span> — 2025
+						<span className="text-orange-400">Lawrence Degoma</span> — 2025
 					</p>
 					<p
-						className="text-white/10 text-xs mt-2"
+						className="text-white/50 text-xs mt-2"
 						style={{ fontFamily: "var(--font-space-mono)" }}
 					>
 						Built with Next.js, Tailwind CSS, Framer Motion

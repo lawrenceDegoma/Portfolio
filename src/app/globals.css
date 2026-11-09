@@ -42,7 +42,17 @@ body {
   100% { transform: translateY(100vh); }
 }
 
+@keyframes bob {
+  0%, 100% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+}
+
 .animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Registered as a utility so it works with variants (e.g. md:animate-bob) */
+@utility animate-bob {
+  animation: bob 3.5s ease-in-out infinite;
+}
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 .animate-gradient {
   background-size: 300% 300%;
@@ -99,5 +109,30 @@ body {
   }
   .animate-pulse-glow {
     animation: none;
+  }
+}
+
+/* Animated filter: blur() is expensive on low-end phones; keep only the
+   opacity/translate part of BlurFade below md. !important beats the inline
+   style Framer Motion writes. */
+@media (max-width: 767px) {
+  .blur-fade {
+    filter: none !important;
+  }
+}
+
+/* Respect the OS "reduce motion" setting for all CSS animations. Framer
+   Motion animations are handled by <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

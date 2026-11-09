@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { MotionConfig } from "framer-motion";
 import Hero from "@/components/Hero";
 
 const Navbar = dynamic(() => import("@/components/Navbar"));
@@ -19,13 +20,15 @@ const Contact = dynamic(() => import("@/components/Contact"), {
 
 export default function Home() {
 	return (
-		<main className="bg-[#0c0c0c] min-h-screen">
-			<Navbar />
-			<Hero />
-			<About />
-			<Projects />
-			<Life />
-			<Contact />
-		</main>
+		<MotionConfig reducedMotion="user">
+			<main className="bg-[#0c0c0c] min-h-screen">
+				<Navbar />
+				<Hero />
+				<About />
+				<Projects />
+				<Life />
+				<Contact />
+			</main>
+		</MotionConfig>
 	);
 }
