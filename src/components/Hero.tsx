@@ -268,7 +268,7 @@ export default function Hero() {
 									className="absolute -top-4 -left-4 glass-strong rounded-md px-3 py-1.5 text-xs font-semibold text-white border border-white/10 md:animate-bob"
 									style={{ animationDelay: "-1.75s" }}
 								>
-									🌿 Building Branch
+									🌿 Branch Creator
 								</div>
 							</div>
 						</motion.div>
